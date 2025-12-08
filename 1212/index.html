@@ -28,7 +28,8 @@
         /* --- Header Hero 主視覺區 --- */
         .header-hero {
             background: var(--shopee-gradient);
-            padding: 35px 20px 60px 20px;
+            /* ★★★ 高度調整重點：上下 padding 減少 ★★★ */
+            padding: 25px 20px 45px 20px; 
             text-align: center;
             border-radius: 0 0 35px 35px;
             box-shadow: 0 10px 30px rgba(238, 77, 45, 0.25);
@@ -51,12 +52,12 @@
         }
 
         .header-hero h1 {
-            color: white; font-size: 28px; margin: 0 0 6px 0;
+            color: white; font-size: 26px; margin: 0 0 4px 0; /* 標題下方間距微調 */
             font-weight: 800; text-shadow: 0 2px 10px rgba(238, 77, 45, 0.3); letter-spacing: 1.5px;
             position: relative; z-index: 2;
         }
         .hero-subtitle {
-            color: rgba(255, 255, 255, 0.95); font-size: 15px; margin: 0 0 18px 0;
+            color: rgba(255, 255, 255, 0.95); font-size: 15px; margin: 0 0 12px 0; /* 副標題下方間距縮小 */
             font-weight: 500; letter-spacing: 1px;
             position: relative; z-index: 2;
         }
@@ -66,7 +67,7 @@
             display: flex;
             flex-direction: column; /* 垂直排列 */
             align-items: center;    /* 居中對齊 */
-            gap: 12px;             /* 兩者之間的間距 */
+            gap: 8px;             /* ★★★ 間距縮小 (原12px) ★★★ */
             position: relative; 
             z-index: 2;
         }
@@ -79,7 +80,7 @@
             border: 1px solid rgba(255, 255, 255, 0.4);
             color: white;
             font-size: 13px;
-            padding: 8px 20px;
+            padding: 6px 16px; /* 內距微調 */
             border-radius: 50px;
             line-height: 1.4;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
@@ -94,7 +95,7 @@
             gap: 5px;
             background: rgba(0, 0, 0, 0.1); 
             border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 4px 12px;
+            padding: 3px 10px; /* 內距微調 */
             border-radius: 20px;
             color: rgba(255, 255, 255, 0.9);
             font-size: 11px;
@@ -104,7 +105,8 @@
         
         /* 內容區 */
         .container {
-            max-width: 360px; margin: -35px auto 0 auto;
+            /* ★★★ 配合變矮的Header，這裡往上拉的距離稍微減少 (-35 -> -30) ★★★ */
+            max-width: 360px; margin: -30px auto 0 auto;
             padding: 0 16px 40px 16px; position: relative; z-index: 10;
         }
         
