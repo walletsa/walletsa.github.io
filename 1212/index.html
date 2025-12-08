@@ -3,118 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>蝦皮優惠資訊情報站</title>
+    <title>優惠資訊情報站</title>
+    
+    <script>
+        document.addEventListener('contextmenu',e=>e.preventDefault());document.onkeydown=function(e){if(event.keyCode==123||(e.ctrlKey&&e.shiftKey&&(e.keyCode=='I'.charCodeAt(0)||e.keyCode=='C'.charCodeAt(0)||e.keyCode=='J'.charCodeAt(0)))||(e.ctrlKey&&e.keyCode=='U'.charCodeAt(0))){return false}};
+    </script>
+
     <style>
-        /* --- 全站基礎設定 --- */
         :root {
             --shopee-orange: #ee4d2d;
             --shopee-gradient: linear-gradient(135deg, #ff6b4b 0%, #ee4d2d 100%);
             --bg-color: #f5f5f5;
             --card-bg: #ffffff;
         }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Microsoft JhengHei", Roboto, sans-serif;
             background-color: var(--bg-color);
-            margin: 0;
-            padding: 0;
-            color: #333;
+            margin: 0; padding: 0; color: #333;
             -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
         }
-
-        /* --- Header Hero 主視覺區 --- */
         .header-hero {
             background: var(--shopee-gradient);
-            padding: 40px 20px 60px 20px;
+            padding: 35px 20px 55px 20px;
             text-align: center;
-            border-radius: 0 0 35px 35px;
-            box-shadow: 0 8px 25px rgba(238, 77, 45, 0.25);
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 5px 20px rgba(238, 77, 45, 0.2);
             position: relative;
         }
-
         .header-hero h1 {
-            color: white;
-            font-size: 28px;
-            margin: 0 0 15px 0;
-            font-weight: 800;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            letter-spacing: 1px;
+            color: white; font-size: 26px; margin: 0 0 8px 0;
+            font-weight: 800; text-shadow: 0 2px 5px rgba(0,0,0,0.1); letter-spacing: 1px;
         }
-
+        .hero-subtitle {
+            color: rgba(255, 255, 255, 0.95); font-size: 16px; margin: 0 0 15px 0;
+            font-weight: 500; letter-spacing: 0.5px;
+        }
         .update-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            padding: 8px 18px;
-            border-radius: 50px;
-            font-size: 13px;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+            background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            padding: 5px 12px; border-radius: 50px; font-size: 12px; color: white;
+            border: 1px solid rgba(255, 255, 255, 0.35); font-weight: 600;
         }
-
-        /* --- 內容容器 --- */
         .container {
-            max-width: 480px;
-            margin: -35px auto 0 auto;
-            padding: 0 16px 50px 16px;
-            position: relative;
-            z-index: 10;
+            max-width: 360px; margin: -30px auto 0 auto;
+            padding: 0 16px 40px 16px; position: relative; z-index: 10;
         }
-
-        /* --- 票券卡片樣式 --- */
         .coupon-ticket {
-            background: var(--card-bg);
-            border-radius: 16px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
-            overflow: hidden;
-            position: relative;
+            background: var(--card-bg); border-radius: 12px; margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); overflow: hidden; position: relative;
             animation: fadeIn 0.5s ease-out;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .ticket-top { padding: 24px 24px 18px 24px; }
-        .ticket-title { font-size: 19px; font-weight: 800; color: #222; display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-        .ticket-icon { font-size: 22px; }
-        .ticket-desc { font-size: 14px; color: #888; padding-left: 2px; font-weight: 500; }
-
-        .ticket-divider { position: relative; height: 24px; display: flex; align-items: center; justify-content: center; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .ticket-top { padding: 18px 18px 10px 18px; }
+        .ticket-title { font-size: 17px; font-weight: 800; color: #222; display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+        .ticket-icon { font-size: 20px; }
+        .ticket-desc { font-size: 13px; color: #888; padding-left: 2px; font-weight: 500; }
+        .ticket-divider { position: relative; height: 12px; display: flex; align-items: center; justify-content: center; }
         .ticket-divider::after { content: ''; width: 88%; border-top: 2px dashed #eee; }
-        .notch-left, .notch-right { position: absolute; width: 24px; height: 24px; background-color: var(--bg-color); border-radius: 50%; top: 0; }
-        .notch-left { left: -12px; } .notch-right { right: -12px; }
-
-        .ticket-bottom { padding: 5px 24px 24px 24px; display: flex; flex-direction: column; gap: 12px; }
-
+        .notch-left, .notch-right { position: absolute; width: 12px; height: 12px; background-color: var(--bg-color); border-radius: 50%; top: 0; }
+        .notch-left { left: -6px; } .notch-right { right: -6px; }
+        .ticket-bottom { padding: 5px 18px 18px 18px; display: flex; flex-direction: column; gap: 10px; }
         .btn-full {
-            width: 100%;
-            background: linear-gradient(180deg, #ff5733 0%, #ee4d2d 100%);
-            color: white; border: none; padding: 15px 0;
-            font-size: 17px; font-weight: 700; border-radius: 10px; cursor: pointer;
-            box-shadow: 0 4px 12px rgba(238, 77, 45, 0.25);
-            position: relative; transition: transform 0.1s, background 0.2s;
-            display: flex; justify-content: center; align-items: center;
+            width: 100%; background: linear-gradient(180deg, #ff5733 0%, #ee4d2d 100%);
+            color: white; border: none; padding: 12px 0; font-size: 15px; font-weight: 700;
+            border-radius: 8px; cursor: pointer; box-shadow: 0 4px 10px rgba(238, 77, 45, 0.2);
+            position: relative; transition: transform 0.1s; display: flex; justify-content: center; align-items: center;
         }
         .btn-full:active { transform: scale(0.97); background: #d03e1e; }
-        .arrow { margin-left: 8px; font-size: 18px; transition: transform 0.2s; }
-        .btn-full:active .arrow { transform: translateX(4px); }
+        .arrow { margin-left: 6px; font-size: 16px; }
     </style>
 </head>
 <body>
 
+<script>
+    (function(){
+        var myDomain = "walletsa.github.io"; 
+        var current = window.location.hostname;
+        if(current.indexOf(myDomain)===-1 && current!=="" && current!=="localhost" && current!=="127.0.0.1"){
+            alert("⚠️ 偵測到非法盜用！\n\n系統將自動導向至正版頁面領取優惠...");
+            window.location.href = "https://" + myDomain + "/1212/";
+        }
+    })();
+</script>
+
 <div class="header-hero">
-    <h1>蝦皮優惠資訊情報站🎉 12.12 狂歡生日慶</h1>
+    <h1>優惠資訊情報站</h1>
+    <div class="hero-subtitle">蝦皮12/12超實用折扣碼</div>
     <div class="update-badge">
-        <span>🕒</span> <span id="lastUpdated">更新中...</span>
+        <span>🕒</span> <span id="lastUpdated">載入中...</span>
     </div>
 </div>
 
@@ -123,13 +101,9 @@
 </div>
 
 <script>
-    // ==========================================
-    // ▼▼▼ 手機編輯區 (在這裡修改折扣碼) ▼▼▼
-    // ==========================================
-    
     const coupons = [
         {
-            show: false,
+            show: true,
             icon: "🚚",
             title: "全站 $299 免運",
             desc: "限今日 00:00 - 02:00 使用",
@@ -178,55 +152,8 @@
         }
     ];
 
-    // ==========================================
-    // ▲▲▲ 程式功能區 (不需要改) ▲▲▲
-    // ==========================================
-
-    const today = new Date();
-    const timeStr = `${today.getMonth()+1}/${today.getDate()} ${String(today.getHours()).padStart(2,'0')}:00 更新`;
-    document.getElementById('lastUpdated').innerText = timeStr;
-
-    const listContainer = document.getElementById('couponList');
-
-    coupons.forEach(item => {
-        if (!item.show) return;
-        const card = document.createElement('div');
-        card.className = 'coupon-ticket';
-        let buttonsHtml = '';
-        item.buttons.forEach(btn => {
-            if (!btn.show) return;
-            buttonsHtml += `<button class="btn-full" onclick="copyAndGo(this, '${btn.code}', '${btn.link}')">${btn.text} <span class="arrow">→</span></button>`;
-        });
-        if (buttonsHtml === '') return;
-        card.innerHTML = `
-            <div class="ticket-top"><div class="ticket-title"><span class="ticket-icon">${item.icon}</span> ${item.title}</div><div class="ticket-desc">${item.desc}</div></div>
-            <div class="ticket-divider"><div class="notch-left"></div><div class="notch-right"></div></div>
-            <div class="ticket-bottom">${buttonsHtml}</div>
-        `;
-        listContainer.appendChild(card);
-    });
-
-    function copyAndGo(btnElement, code, url) {
-        const originalText = btnElement.innerHTML;
-        btnElement.innerHTML = "已複製！跳轉中...";
-        btnElement.style.background = "#d03e1e";
-        
-        const textArea = document.createElement("textarea");
-        textArea.value = code;
-        textArea.style.position = "fixed"; textArea.style.left = "-9999px";
-        document.body.appendChild(textArea);
-        textArea.select();
-        try { document.execCommand('copy'); } catch (err) {}
-        document.body.removeChild(textArea);
-
-        setTimeout(() => {
-            window.location.href = url;
-            setTimeout(() => { 
-                btnElement.innerHTML = originalText; 
-                btnElement.style.background = ""; 
-            }, 1000);
-        }, 300);
-    }
+    (function(_0x1,_0x2){const _0x3=new Date();const _0x4=`${_0x3.getMonth()+1}/${_0x3.getDate()} ${String(_0x3.getHours()).padStart(2,'0')}:00 更新`;document.getElementById('lastUpdated').innerText=_0x4;const _0x5=document.getElementById('couponList');_0x1.forEach(_0x6=>{if(!_0x6.show)return;const _0x7=document.createElement('div');_0x7.className='coupon-ticket';let _0x8='';_0x6.buttons.forEach(_0x9=>{if(!_0x9.show)return;_0x8+=`<button class="btn-full" onclick="_0xZ(this,'${_0x9.code}','${_0x9.link}')">${_0x9.text} <span class="arrow">→</span></button>`});if(_0x8==='')return;_0x7.innerHTML=`<div class="ticket-top"><div class="ticket-title"><span class="ticket-icon">${_0x6.icon}</span> ${_0x6.title}</div><div class="ticket-desc">${_0x6.desc}</div></div><div class="ticket-divider"><div class="notch-left"></div><div class="notch-right"></div></div><div class="ticket-bottom">${_0x8}</div>`;_0x5.appendChild(_0x7)})})(coupons);function _0xZ(e,c,u){const o=e.innerHTML;e.innerHTML="已複製！跳轉中...";e.style.background="#d03e1e";const t=document.createElement("textarea");t.value=c;t.style.position="fixed";t.style.left="-9999px";document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(err){}document.body.removeChild(t);setTimeout(()=>{window.location.href=u;setTimeout(()=>{e.innerHTML=o;e.style.background=""},1000)},300)};
 </script>
+
 </body>
 </html>
