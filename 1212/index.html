@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>12.12 狂歡生日慶</title>
+    <style>
+        /* --- 全站基礎設定 --- */
+        :root {
+            --shopee-orange: #ee4d2d;
+            --shopee-gradient: linear-gradient(135deg, #ff6b4b 0%, #ee4d2d 100%);
+            --bg-color: #f5f5f5;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Microsoft JhengHei", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            color: #333;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* --- Header Hero 主視覺區 --- */
+        .header-hero {
+            background: var(--shopee-gradient);
+            padding: 40px 20px 60px 20px;
+            text-align: center;
+            border-radius: 0 0 35px 35px;
+            box-shadow: 0 8px 25px rgba(238, 77, 45, 0.25);
+            position: relative;
+        }
+
+        .header-hero h1 {
+            color: white;
+            font-size: 28px;
+            margin: 0 0 15px 0;
+            font-weight: 800;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            letter-spacing: 1px;
+        }
+
+        .update-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 13px;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        /* --- 內容容器 --- */
+        .container {
+            max-width: 480px;
+            margin: -35px auto 0 auto;
+            padding: 0 16px 50px 16px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* --- 票券卡片樣式 --- */
+        .coupon-ticket {
+            background: var(--card-bg);
+            border-radius: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+            overflow: hidden;
+            position: relative;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .ticket-top { padding: 24px 24px 18px 24px; }
+        .ticket-title { font-size: 19px; font-weight: 800; color: #222; display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .ticket-icon { font-size: 22px; }
+        .ticket-desc { font-size: 14px; color: #888; padding-left: 2px; font-weight: 500; }
+
+        .ticket-divider { position: relative; height: 24px; display: flex; align-items: center; justify-content: center; }
+        .ticket-divider::after { content: ''; width: 88%; border-top: 2px dashed #eee; }
+        .notch-left, .notch-right { position: absolute; width: 24px; height: 24px; background-color: var(--bg-color); border-radius: 50%; top: 0; }
+        .notch-left { left: -12px; } .notch-right { right: -12px; }
+
+        .ticket-bottom { padding: 5px 24px 24px 24px; display: flex; flex-direction: column; gap: 12px; }
+
+        .btn-full {
+            width: 100%;
+            background: linear-gradient(180deg, #ff5733 0%, #ee4d2d 100%);
+            color: white; border: none; padding: 15px 0;
+            font-size: 17px; font-weight: 700; border-radius: 10px; cursor: pointer;
+            box-shadow: 0 4px 12px rgba(238, 77, 45, 0.25);
+            position: relative; transition: transform 0.1s, background 0.2s;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .btn-full:active { transform: scale(0.97); background: #d03e1e; }
+        .arrow { margin-left: 8px; font-size: 18px; transition: transform 0.2s; }
+        .btn-full:active .arrow { transform: translateX(4px); }
+    </style>
+</head>
+<body>
+
+<div class="header-hero">
+    <h1>🎉 12.12 狂歡生日慶</h1>
+    <div class="update-badge">
+        <span>🕒</span> <span id="lastUpdated">更新中...</span>
+    </div>
+</div>
+
+<div class="container">
+    <div id="couponList"></div>
+</div>
+
+<script>
+    // ==========================================
+    // ▼▼▼ 手機編輯區 (在這裡修改折扣碼) ▼▼▼
+    // ==========================================
+    
+    const coupons = [
+        {
+            show: true,
+            icon: "🚚",
+            title: "全站 $299 免運",
+            desc: "限今日 00:00 - 02:00 使用",
+            buttons: [
+                {
+                    show: true,
+                    text: "一鍵領取免運券",
+                    code: "1212FREESHIP",
+                    link: "https://shope.ee/你的免運連結"
+                }
+            ]
+        },
+        {
+            show: true,
+            icon: "🏪",
+            title: "商城 $299 折 $30",
+            desc: "指定超商取貨限定",
+            buttons: [
+                {
+                    show: true,
+                    text: "7-11 取貨限定",
+                    code: "SHOP711",
+                    link: "https://shope.ee/你的711連結"
+                },
+                {
+                    show: true,
+                    text: "全家 取貨限定",
+                    code: "SHOPFAM",
+                    link: "https://shope.ee/你的全家連結"
+                }
+            ]
+        },
+        {
+            show: true,
+            icon: "⚡",
+            title: "商城 85 折 (最高折$2,000)",
+            desc: "數量有限，先搶先贏",
+            buttons: [
+                {
+                    show: true,
+                    text: "領取 85 折券",
+                    code: "MALL85OFF",
+                    link: "https://shope.ee/你的商城連結"
+                }
+            ]
+        }
+    ];
+
+    // ==========================================
+    // ▲▲▲ 程式功能區 (不需要改) ▲▲▲
+    // ==========================================
+
+    const today = new Date();
+    const timeStr = `${today.getMonth()+1}/${today.getDate()} ${String(today.getHours()).padStart(2,'0')}:00 更新`;
+    document.getElementById('lastUpdated').innerText = timeStr;
+
+    const listContainer = document.getElementById('couponList');
+
+    coupons.forEach(item => {
+        if (!item.show) return;
+        const card = document.createElement('div');
+        card.className = 'coupon-ticket';
+        let buttonsHtml = '';
+        item.buttons.forEach(btn => {
+            if (!btn.show) return;
+            buttonsHtml += `<button class="btn-full" onclick="copyAndGo(this, '${btn.code}', '${btn.link}')">${btn.text} <span class="arrow">→</span></button>`;
+        });
+        if (buttonsHtml === '') return;
+        card.innerHTML = `
+            <div class="ticket-top"><div class="ticket-title"><span class="ticket-icon">${item.icon}</span> ${item.title}</div><div class="ticket-desc">${item.desc}</div></div>
+            <div class="ticket-divider"><div class="notch-left"></div><div class="notch-right"></div></div>
+            <div class="ticket-bottom">${buttonsHtml}</div>
+        `;
+        listContainer.appendChild(card);
+    });
+
+    function copyAndGo(btnElement, code, url) {
+        const originalText = btnElement.innerHTML;
+        btnElement.innerHTML = "已複製！跳轉中...";
+        btnElement.style.background = "#d03e1e";
+        
+        const textArea = document.createElement("textarea");
+        textArea.value = code;
+        textArea.style.position = "fixed"; textArea.style.left = "-9999px";
+        document.body.appendChild(textArea);
+        textArea.select();
+        try { document.execCommand('copy'); } catch (err) {}
+        document.body.removeChild(textArea);
+
+        setTimeout(() => {
+            window.location.href = url;
+            setTimeout(() => { 
+                btnElement.innerHTML = originalText; 
+                btnElement.style.background = ""; 
+            }, 1000);
+        }, 300);
+    }
+</script>
+</body>
+</html>
