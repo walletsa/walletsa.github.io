@@ -147,7 +147,6 @@
         .social-btn img {
             width: 100%; height: 100%;
             object-fit: contain;
-            /* 保持圓角，讓圖示看起來圓潤 */
             border-radius: 12px; 
         }
 
@@ -209,14 +208,14 @@
 
 <script>
     // ==========================================
-    // ▼▼▼ 手機編輯區 (Only edit here) ▼▼▼
+    // ▼▼▼ 手機編輯區 (卡片資料) ▼▼▼
     // ==========================================
     const coupons = [
         {
             show: true,
             icon: "⚡️",
             title: "全站 $100 折 $20",
-            desc: "100-20" ,
+            desc: "100-20",
             buttons: [
                 {
                     show: true,
@@ -225,8 +224,10 @@
                     link: "https://s.shopee.tw/1gBSJ7SKKn"
                 }
             ]
-        },
-                {
+        }, 
+
+        
+        {
             show: true,
             icon: "🏪",
             title: "全站 $299 折 $30",
@@ -243,12 +244,15 @@
                     text: "全家 限定",
                     code: "FMSP12",
                     link: "https://s.shopee.tw/4LCDU0IZyC"
-                },
+                }
+            ] 
+        }, 
+
         {
             show: true,
             icon: "🏪",
             title: "商城 $299 折 $30",
-            desc: "指定超商取貨限定 ",
+            desc: "指定超商取貨限定",
             buttons: [
                 {
                     show: true,
@@ -274,9 +278,9 @@
                     code: "OKAPP12",
                     link: "https://s.shopee.tw/7fSfS6O5da"
                 }
-                
             ]
         },
+
         {
             show: true,
             icon: "⚡",
@@ -299,9 +303,10 @@
         }
     ];
 
-
     (function(_d){const _n=new Date();document.getElementById('lastUpdated').innerText=`${_n.getMonth()+1}/${_n.getDate()} ${String(_n.getHours()).padStart(2,'0')}:00 更新`;const _c=document.getElementById('couponList');_d.forEach(_i=>{if(!_i.show)return;const _abs=_i.buttons.filter(b=>b.show);if(_abs.length===0)return;const _ex=_abs.length===1?'btn-full-width':'';let _h='';_abs.forEach(_b=>{_h+=`<button class="btn-action ${_ex}" onclick="_xg(this,'${_b.code}','${_b.link}')">${_b.text} <span class="arrow">→</span></button>`});const _el=document.createElement('div');_el.className='deal-card';_el.innerHTML=`<div class="card-body"><div class="card-title"><span class="card-icon">${_i.icon}</span> ${_i.title}</div><div class="card-desc">${_i.desc}</div></div><div class="card-divider"></div><div class="card-actions">${_h}</div>`;_c.appendChild(_el)})})(coupons);function _xg(e,c,u){const o=e.innerHTML;e.innerHTML="已複製！";e.style.background="#333";const t=document.createElement("textarea");t.value=c;t.style.position="fixed";t.style.left="-9999px";document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(x){}document.body.removeChild(t);window.location.href=u;setTimeout(()=>{e.innerHTML=o;e.style.background=""},1000)};
 </script>
 
 </body>
 </html>
+
+
