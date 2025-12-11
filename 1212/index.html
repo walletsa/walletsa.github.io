@@ -7,17 +7,21 @@
     <!-- 網頁標題 -->
     <title>優惠資訊情報站</title>
     
+
     <script>
         document.addEventListener('contextmenu',e=>e.preventDefault());document.onkeydown=function(e){if(event.keyCode==123||(e.ctrlKey&&e.shiftKey&&(e.keyCode=='I'.charCodeAt(0)||e.keyCode=='C'.charCodeAt(0)||e.keyCode=='J'.charCodeAt(0)))||(e.ctrlKey&&e.keyCode=='U'.charCodeAt(0))){return false}};
     </script>
 
     <style>
         :root {
-            --primary-orange: #ee4d2d;
+
+            --primary-orange: #ee4d2d; 
             --primary-gradient: linear-gradient(90deg, #ff5722 0%, #ee4d2d 100%);
-            --bg-color: #f0f2f5;
+            
+            --bg-color: #f5f7fa;
             --text-dark: #222222;
         }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Microsoft JhengHei", Roboto, sans-serif;
             background-color: var(--bg-color);
@@ -26,15 +30,15 @@
             user-select: none; -webkit-user-select: none;
         }
 
-        /* Header: 質感暖色漸層風 */
+        /* Header */
         .app-header {
-            background: linear-gradient(180deg, #fff8f6 0%, #ffffff 100%);
+            background: linear-gradient(180deg, #fffcfc 0%, #ffffff 100%);
             border-top: 6px solid var(--primary-orange);
             padding: 20px 20px 40px 20px;
             text-align: center;
             border-bottom-left-radius: 24px;
             border-bottom-right-radius: 24px;
-            box-shadow: 0 5px 15px rgba(238, 77, 45, 0.06);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
             position: relative; z-index: 1;
         }
 
@@ -44,22 +48,23 @@
             display: flex; align-items: center; justify-content: center; gap: 6px;
         }
         .page-subtitle {
-            color: #444; font-size: 15px; font-weight: 700; margin: 0 0 16px 0;
+            color: #555; font-size: 15px; font-weight: 700; margin: 0 0 16px 0;
             letter-spacing: 0.5px;
         }
 
         .info-panel {
-            background: #ffffff; border: 1px solid #ffeadd; border-radius: 10px;
+            background: #ffffff; border: 1px solid #eee; border-radius: 10px;
             padding: 10px 12px;
             display: inline-flex; flex-direction: column; gap: 4px;
             width: 100%; max-width: 280px;
-            box-shadow: 0 3px 10px rgba(238, 77, 45, 0.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
         }
         
-        .tip-row { font-size: 13px; color: #333; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .tip-row { font-size: 13px; color: #444; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 6px; }
+        /* highlight 使用橘色背景淡化 */
         .tip-highlight { color: var(--primary-orange); font-weight: 700; background: rgba(238, 77, 45, 0.08); padding: 1px 5px; border-radius: 4px; }
         .time-row { 
-            font-size: 11px; color: #888; border-top: 1px dashed #eee; 
+            font-size: 11px; color: #999; border-top: 1px dashed #eee; 
             padding-top: 4px; margin-top: 2px;
             display: flex; align-items: center; justify-content: center; gap: 4px;
         }
@@ -74,8 +79,8 @@
         /* 卡片樣式 */
         .deal-card {
             background: #ffffff; border-radius: 10px; margin-bottom: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03); overflow: hidden; position: relative;
-            border-left: 5px solid var(--primary-orange);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02); overflow: hidden; position: relative;
+            border-left: 4px solid var(--primary-orange); 
             animation: slideUp 0.5s ease-out;
         }
         @keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
@@ -83,71 +88,64 @@
         .card-body { padding: 14px 16px 10px 16px; }
         .card-title { font-size: 16px; font-weight: 800; color: #333; display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
         .card-icon { font-size: 18px; }
-        .card-desc { font-size: 12px; color: #666; font-weight: 500; margin-left: 2px; }
-        .card-divider { height: 1px; background: #f0f0f0; margin: 0 16px; }
+        .card-desc { font-size: 12px; color: #777; font-weight: 500; margin-left: 2px; }
+        .card-divider { height: 1px; background: #f4f4f4; margin: 0 16px; }
 
         .card-actions {
             padding: 10px 16px 14px 16px;
             display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
         }
 
+        /* ★★★ 按鈕樣式：空心橘 ★★★ */
         .btn-action {
-            width: 100%; background: var(--primary-gradient);
-            color: white; border: none; padding: 9px 0;
+            width: 100%; 
+            background: #ffffff; /* 白底 */
+            border: 1.5px solid var(--primary-orange); /* 橘色邊框 */
+            color: var(--primary-orange); /* 橘色文字 */
+            padding: 9px 0;
             font-size: 13px; font-weight: 700; border-radius: 6px; cursor: pointer;
-            box-shadow: 0 3px 8px rgba(238, 77, 45, 0.15);
-            position: relative; transition: all 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            position: relative; transition: all 0.1s;
             display: flex; justify-content: center; align-items: center;
         }
-        .btn-action:active { transform: scale(0.96); box-shadow: 0 2px 4px rgba(238, 77, 45, 0.15); }
+        
+        /* 手指按下去的時候變實心橘 */
+        .btn-action:active { 
+            background: var(--primary-orange); 
+            color: #ffffff;
+            transform: scale(0.98); 
+        }
+        
         .arrow { margin-left: 3px; font-weight: bold; font-size: 12px; }
 
         .btn-full-width { grid-column: span 2; padding: 10px 0; font-size: 15px; }
 
+        /* 社群導流區塊 */
         .social-section {
-            /* 移除卡片樣式 */
-            background: transparent; 
-            box-shadow: none;
-            
-            margin-top: 30px; 
-            margin-bottom: 20px;
-            padding: 0;
-            text-align: center;
+            background: transparent; box-shadow: none;
+            margin-top: 30px; margin-bottom: 20px;
+            padding: 0; text-align: center;
             animation: slideUp 0.6s ease-out;
         }
-        
         .social-title {
-            font-size: 13px; font-weight: 500; color: #999; /* 顏色改淡 */
-            margin-bottom: 15px;
-            position: relative; display: inline-block;
+            font-size: 13px; font-weight: 500; color: #999;
+            margin-bottom: 15px; position: relative; display: inline-block;
         }
-        
-        /* 裝飾線也改淡 */
         .social-title::before, .social-title::after {
             content: ''; position: absolute; top: 50%; width: 20px; height: 1px; background: #ddd;
         }
         .social-title::before { right: 110%; }
         .social-title::after { left: 110%; }
-
         .social-icons {
-            display: flex; justify-content: center; gap: 24px; /* 間距稍微拉大 */
-            align-items: center;
+            display: flex; justify-content: center; gap: 24px; align-items: center;
         }
-        
-        /* 圖片按鈕樣式 */
         .social-btn {
-            width: 40px; height: 40px;
-            display: block;
-            transition: transform 0.2s;
-            text-decoration: none;
-            opacity: 0.9;
+            width: 40px; height: 40px; display: block;
+            transition: transform 0.2s; text-decoration: none; opacity: 0.9;
         }
         .social-btn:active { transform: scale(0.9); opacity: 1; }
-        
         .social-btn img {
-            width: 100%; height: 100%;
-            object-fit: contain;
-            border-radius: 12px; 
+            width: 100%; height: 100%; object-fit: contain; border-radius: 12px; 
         }
 
     </style>
@@ -211,6 +209,7 @@
     // ▼▼▼ 手機編輯區 (卡片資料) ▼▼▼
     // ==========================================
     const coupons = [
+        // --- 第 1 張卡片 ---
         {
             show: true,
             icon: "⚡️",
@@ -225,8 +224,7 @@
                 }
             ]
         }, 
-
-        
+        // --- 第 2 張卡片 ---
         {
             show: true,
             icon: "🏪",
@@ -245,14 +243,14 @@
                     code: "FMSP12",
                     link: "https://s.shopee.tw/4LCDU0IZyC"
                 }
-            ] 
-        }, 
-
+            ]
+        },
+        // --- 第 3 張卡片 ---
         {
             show: true,
             icon: "🏪",
             title: "商城 $299 折 $30",
-            desc: "指定超商取貨限定",
+            desc: "指定超商取貨限定 ",
             buttons: [
                 {
                     show: true,
@@ -280,7 +278,7 @@
                 }
             ]
         },
-
+        // --- 第 4 張卡片 ---
         {
             show: true,
             icon: "⚡",
@@ -303,10 +301,9 @@
         }
     ];
 
+
     (function(_d){const _n=new Date();document.getElementById('lastUpdated').innerText=`${_n.getMonth()+1}/${_n.getDate()} ${String(_n.getHours()).padStart(2,'0')}:00 更新`;const _c=document.getElementById('couponList');_d.forEach(_i=>{if(!_i.show)return;const _abs=_i.buttons.filter(b=>b.show);if(_abs.length===0)return;const _ex=_abs.length===1?'btn-full-width':'';let _h='';_abs.forEach(_b=>{_h+=`<button class="btn-action ${_ex}" onclick="_xg(this,'${_b.code}','${_b.link}')">${_b.text} <span class="arrow">→</span></button>`});const _el=document.createElement('div');_el.className='deal-card';_el.innerHTML=`<div class="card-body"><div class="card-title"><span class="card-icon">${_i.icon}</span> ${_i.title}</div><div class="card-desc">${_i.desc}</div></div><div class="card-divider"></div><div class="card-actions">${_h}</div>`;_c.appendChild(_el)})})(coupons);function _xg(e,c,u){const o=e.innerHTML;e.innerHTML="已複製！";e.style.background="#333";const t=document.createElement("textarea");t.value=c;t.style.position="fixed";t.style.left="-9999px";document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(x){}document.body.removeChild(t);window.location.href=u;setTimeout(()=>{e.innerHTML=o;e.style.background=""},1000)};
 </script>
 
 </body>
 </html>
-
-
