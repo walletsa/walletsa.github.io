@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- 網頁標題 -->
+    <title>優惠資訊情報站</title>
+    
+    <script>
+        document.addEventListener('contextmenu',e=>e.preventDefault());document.onkeydown=function(e){if(event.keyCode==123||(e.ctrlKey&&e.shiftKey&&(e.keyCode=='I'.charCodeAt(0)||e.keyCode=='C'.charCodeAt(0)||e.keyCode=='J'.charCodeAt(0)))||(e.ctrlKey&&e.keyCode=='U'.charCodeAt(0))){return false}};
+    </script>
+
+    <style>
+        :root {
+            /* 經典橘色配置 */
+            --primary-orange: #ee4d2d; 
+            --primary-gradient: linear-gradient(90deg, #ff5722 0%, #ee4d2d 100%);
+            --bg-color: #f5f7fa;
+            --text-dark: #222222;
+            --disabled-gray: #999999;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Microsoft JhengHei", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0; color: var(--text-dark);
+            -webkit-tap-highlight-color: transparent;
+            user-select: none; -webkit-user-select: none;
+        }
+
+        /* Header */
+        .app-header {
+            background: linear-gradient(180deg, #fffcfc 0%, #ffffff 100%);
+            border-top: 6px solid var(--primary-orange);
+            padding: 20px 20px 40px 20px;
+            text-align: center;
+            border-bottom-left-radius: 24px;
+            border-bottom-right-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            position: relative; z-index: 1;
+        }
+        .header-active {
+            background: linear-gradient(180deg, #fffcfc 0%, #ffffff 100%);
+            border-top: 6px solid var(--primary-orange);
+            padding: 20px 20px 40px 20px; text-align: center;
+            border-bottom-left-radius: 24px; border-bottom-right-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03); position: relative; z-index: 1;
+        }
+        .brand-active {
+            color: var(--primary-orange); font-size: 22px; font-weight: 900; margin: 0 0 4px 0; letter-spacing: 1px;
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+        }
+        .header-ended {
+            background: linear-gradient(180deg, #fffcfc 0%, #ffffff 100%);
+            border-top: 6px solid var(--disabled-gray);
+            padding: 20px 20px 40px 20px; text-align: center;
+            border-bottom-left-radius: 24px; border-bottom-right-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03); position: relative; z-index: 1;
+        }
+        .brand-ended {
+            color: var(--disabled-gray); font-size: 22px; font-weight: 900; margin: 0 0 4px 0; letter-spacing: 1px;
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+        }
+
+        .page-subtitle {
+            color: #555; font-size: 15px; font-weight: 700; margin: 0 0 16px 0;
+            letter-spacing: 0.5px;
+        }
+
+        .info-panel {
+            background: #ffffff; border: 1px solid #eee; border-radius: 10px;
+            padding: 10px 12px;
+            display: inline-flex; flex-direction: column; gap: 4px;
+            width: 100%; max-width: 280px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+        
+        .tip-row { font-size: 13px; color: #444; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .tip-highlight { color: var(--primary-orange); font-weight: 700; background: rgba(238, 77, 45, 0.08); padding: 1px 5px; border-radius: 4px; }
+        .time-row { 
+            font-size: 11px; color: #999; border-top: 1px dashed #eee; 
+            padding-top: 4px; margin-top: 2px;
+            display: flex; align-items: center; justify-content: center; gap: 4px;
+        }
+
+        /* 內容容器 */
+        .container {
+            max-width: 360px; margin: -25px auto 0 auto;
+            padding: 0 12px 30px 12px;
+            position: relative; z-index: 10;
+        }
+
+        /* 卡片樣式 */
+        .deal-card {
+            background: #ffffff; border-radius: 10px; margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02); overflow: hidden; position: relative;
+            border-left: 4px solid var(--primary-orange); 
+            animation: slideUp 0.5s ease-out;
+        }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        .card-body { padding: 14px 16px 10px 16px; }
+        .card-title { font-size: 16px; font-weight: 800; color: #333; display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+        .card-icon { font-size: 18px; }
+        .card-desc { font-size: 12px; color: #777; font-weight: 500; margin-left: 2px; }
+        .card-divider { height: 1px; background: #f4f4f4; margin: 0 16px; }
+
+        .card-actions {
+            padding: 10px 16px 14px 16px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+        }
+
+        /* 按鈕樣式：空心橘 */
+        .btn-action {
+            width: 100%; 
+            background: #ffffff;
+            border: 1.5px solid var(--primary-orange);
+            color: var(--primary-orange);
+            padding: 9px 0;
+            font-size: 13px; font-weight: 700; border-radius: 6px; cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            position: relative; transition: all 0.1s;
+            display: flex; justify-content: center; align-items: center;
+        }
+        
+        .btn-action:active { 
+            background: var(--primary-orange); 
+            color: #ffffff;
+            transform: scale(0.98); 
+        }
+        
+        .arrow { margin-left: 3px; font-weight: bold; font-size: 12px; }
+        .btn-full-width { grid-column: span 2; padding: 10px 0; font-size: 15px; }
+
+        /* 結束卡片 */
+        .end-card {
+            background: #ffffff; border-radius: 10px; margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02); padding: 30px 20px; text-align: center;
+            border-top: 4px solid var(--disabled-gray); animation: fadeIn 0.8s ease-out;
+        }
+        .end-icon { font-size: 40px; margin-bottom: 15px; display: block; filter: grayscale(100%); }
+        .end-title { font-size: 18px; font-weight: 800; color: #555; margin-bottom: 8px; }
+        .end-desc { font-size: 14px; color: #999; line-height: 1.5; margin-bottom: 20px; }
+        .btn-home {
+            width: 100%; display: block; background: #333; color: white;
+            padding: 12px 0; text-decoration: none; font-size: 14px; font-weight: 700; border-radius: 6px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.1s;
+        }
+        .btn-home:active { transform: scale(0.96); }
+
+        /* 社群導流區塊 */
+        .social-section {
+            background: transparent; box-shadow: none;
+            margin-top: 30px; margin-bottom: 20px;
+            padding: 0; text-align: center;
+            animation: slideUp 0.6s ease-out;
+        }
+        .social-title {
+            font-size: 13px; font-weight: 500; color: #999;
+            margin-bottom: 15px; position: relative; display: inline-block;
+        }
+        .social-title::before, .social-title::after {
+            content: ''; position: absolute; top: 50%; width: 20px; height: 1px; background: #ddd;
+        }
+        .social-title::before { right: 110%; }
+        .social-title::after { left: 110%; }
+        .social-icons {
+            display: flex; justify-content: center; gap: 24px; align-items: center;
+        }
+        .social-btn {
+            width: 40px; height: 40px; display: block;
+            transition: transform 0.2s; text-decoration: none; opacity: 0.9;
+        }
+        .social-btn:active { transform: scale(0.9); opacity: 1; }
+        .social-btn img {
+            width: 100%; height: 100%; object-fit: contain; border-radius: 12px; 
+        }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .view-section { display: none; }
+    </style>
+</head>
+<body>
+
+<script>
+    (function(){
+        var myDomain = "walletsa.github.io"; 
+        var current = window.location.hostname;
+        if(current.indexOf(myDomain)===-1 && current!=="" && current!=="localhost" && current!=="127.0.0.1"){
+            alert("⚠️ 偵測到非法盜用！\n\n系統將自動導向至正版頁面領取優惠...");
+            window.location.href = "https://" + myDomain + "/1218/";
+        }
+    })();
+</script>
+
+<!-- ========================================== -->
+<!-- ▼▼▼ 畫面 A：活動進行中 ▼▼▼ -->
+<!-- ========================================== -->
+<div id="view-active" class="view-section">
+    <div class="header-active">
+        <div class="brand-active">優惠資訊情報站</div>
+        <div class="page-subtitle"><span>🎉</span>蝦皮 12/18 商城狂購節</div>
+        
+        <div class="info-panel">
+            <div class="tip-row">
+                <span style="font-size:16px">💡</span> 
+                <span>點擊按鈕 <span class="tip-highlight">自動複製 + 前往領券</span></span>
+            </div>
+            <div class="time-row">
+                <span>🕒</span> <span id="lastUpdated">載入中...</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- 優惠券列表 -->
+        <div id="couponList"></div>
+
+        <!-- 社群區塊 (共用) -->
+        <div class="social-section">
+            <div class="social-title">歡迎加入社群 掌握最新優惠</div>
+            <div class="social-icons" id="social-active"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- ▼▼▼ 畫面 B：活動已結束 ▼▼▼ -->
+<!-- ========================================== -->
+<div id="view-ended" class="view-section">
+    <div class="header-ended">
+        <div class="brand-ended">優惠資訊情報站</div>
+        <div class="page-subtitle">12/18 活動已圓滿結束</div>
+    </div>
+
+    <div class="container">
+        <div class="end-card">
+            <span class="end-icon">👋</span>
+            <div class="end-title">活動已結束！</div>
+            <div class="end-desc">
+                本檔期優惠活動已經結束囉<br>
+                請加入社群，鎖定下一波優惠通知
+            </div>
+            <!-- 引導回首頁或下一檔 -->
+            <a href="https://walletsa.github.io/" class="btn-home">
+                前往首頁查看最新資訊 →
+            </a>
+        </div>
+
+        <div class="social-section">
+            <div class="social-title">加入社群 不錯過下次優惠</div>
+            <div class="social-icons" id="social-ended"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ==========================================
+    // ▼▼▼ 自動切換設定區 (請修改這裡) ▼▼▼
+    // ==========================================
+    
+    // 設定 12/18 結束時間 (隔天變成結束畫面)
+    const endTimeStr = "2025-12-19 00:00:00"; 
+
+    // ==========================================
+    // ▼▼▼ 手機編輯區 (卡片資料 - 12/12 內容模板) ▼▼▼
+    // ==========================================
+    const coupons = [
+        // --- 第 1 張卡片 ---
+        {
+            show: true,
+            icon: "⚡️",
+            title: "全站 $100 折 $20",
+            desc: "100-20",
+            buttons: [
+                {
+                    show: true,
+                    text: "自動複製 + 前往領券",
+                    code: "1218DESH",
+                    link: "https://s.shopee.tw/6VGsdns2T2"
+                }
+            ]
+        }, 
+        // --- 第 2 張卡片 ---
+        {
+            show: true,
+            icon: "😘",
+            title: "全站 $199 折 $20",
+            desc: "199-20",
+            buttons: [
+                {
+                    show: true,
+                    text: "第一組",
+                    code: "WT6V4FFCBD",
+                    link: "https://s.shopee.tw/8KiWp9u3ZB"
+                },
+                {
+                    show: true,
+                    text: "第二組",
+                    code: "NLLHDGCTHF",
+                    link: "https://s.shopee.tw/6VGsdns2T2"
+                }
+            ]
+        },
+        // --- 第 3 張卡片 ---
+        {
+            show: true,
+            icon: "🏪",
+            title: "商城 $299 折 $30",
+            desc: "指定超商取貨限定 ",
+            buttons: [
+                {
+                    show: false,
+                    text: "7-11 限定",
+                    code: "APSEVEN12",
+                    link: "https://s.shopee.tw/7fSfS6O5da"
+                },
+                {
+                    show: true,
+                    text: "全家 限定",
+                    code: "APP1218FM",
+                    link: "https://s.shopee.tw/8KiWp9u3ZB"
+                },
+                {
+                    show: false,
+                    text: "萊爾富 限定",
+                    code: "HLAPP12",
+                    link: "https://s.shopee.tw/7fSfS6O5da"
+                },
+                {
+                    show: false,
+                    text: "OK 限定",
+                    code: "OKAPP12",
+                    link: "https://s.shopee.tw/7fSfS6O5da"
+                }
+            ]
+        },
+        // --- 第 4 張卡片 ---
+        {
+            show: false,
+            icon: "⚡",
+            title: "全站12%蝦幣",
+            desc: "滿599享72蝦幣",
+            buttons: [
+                {
+                    show: true,
+                    text: "第一組",
+                    code: "HBD1212",
+                    link: "https://s.shopee.tw/40ZN5LL3mG"
+                },
+                {
+                    show: true,
+                    text: "第二組",
+                    code: "BUY1212",
+                    link: "https://s.shopee.tw/40ZN5LL3mG"
+                }
+            ]
+        }
+    ];
+
+
+    (function(){var s=`<a href="https://line.me/..." target="_blank" class="social-btn"><img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg"></a><a href="https://www.threads.net/..." target="_blank" class="social-btn"><img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Threads_%28app%29.svg"></a><a href="https://www.facebook.com/..." target="_blank" class="social-btn"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg"></a>`;document.getElementById('social-active').innerHTML=s;document.getElementById('social-ended').innerHTML=s;var n=new Date(),e=new Date(endTimeStr);if(n>e){document.getElementById('view-active').style.display='none';document.getElementById('view-ended').style.display='block';}else{document.getElementById('view-active').style.display='block';document.getElementById('view-ended').style.display='none';var c=document.getElementById('couponList');if(c.innerHTML===""){coupons.forEach(function(i){if(!i.show)return;var b=i.buttons.filter(function(x){return x.show});if(b.length===0)return;var x=b.length===1?'btn-full-width':'',h='';b.forEach(function(bt){h+='<button class="btn-action '+x+'" onclick="_xg(this,\''+bt.code+'\',\''+bt.link+'\')">'+bt.text+' <span class="arrow">→</span></button>'});var d=document.createElement('div');d.className='deal-card';d.innerHTML='<div class="card-body"><div class="card-title"><span class="card-icon">'+i.icon+'</span> '+i.title+'</div><div class="card-desc">'+i.desc+'</div></div><div class="card-divider"></div><div class="card-actions">'+h+'</div>';c.appendChild(d);});}document.getElementById('lastUpdated').innerText=(n.getMonth()+1)+'/'+n.getDate()+' '+String(n.getHours()).padStart(2,'0')+':00 更新';}})();window._xg=function(e,c,u){var o=e.innerHTML;e.innerHTML="已複製！";e.style.background="#ee4d2d";e.style.color="white";var t=document.createElement("textarea");t.value=c;t.style.position="fixed";t.style.left="-9999px";document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(x){}document.body.removeChild(t);window.location.href=u;setTimeout(function(){e.innerHTML=o;e.style.background="";e.style.color="";},1000)};
+</script>
+
+</body>
+</html>
