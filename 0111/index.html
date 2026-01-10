@@ -200,7 +200,7 @@
 <div id="view-active" class="view-section">
     <div class="header-active">
         <div class="brand-active">優惠資訊情報站</div>
-        <div class="page-subtitle"><span>🎉</span>蝦皮 1/11購物節</div>
+        <div class="page-subtitle"><span>🎉</span>蝦皮 1/11 購物節</div>
         
         <div class="info-panel">
             <div class="tip-row">
@@ -260,11 +260,20 @@
     // ▼▼▼ 自動切換設定區 (請修改這裡) ▼▼▼
     // ==========================================
     
-    // 設定 12/18 結束時間 (隔天變成結束畫面)
-    const endTimeStr = "2026-01-11 00:00:00"; 
+    // 設定 1/11 結束時間 (隔天變成結束畫面)
+    const endTimeStr = "2026-01-11 23:59:59"; 
 
     // ==========================================
-    // ▼▼▼ 手機編輯區 (卡片資料 - 12/12 內容模板) ▼▼▼
+    // ▼▼▼ 社群連結設定區 (在這裡修改網址！) ▼▼▼
+    // ==========================================
+    const socialLinks = {
+        line: "https://lihi.cc/yrdYN",       // 在這裡貼上你的 LINE 連結
+        threads: "https://lihi.cc/u3Jse",    // 在這裡貼上你的 Threads 連結
+        facebook: "https://lihi.cc/Wu9Uv"   // 在這裡貼上你的 FB 連結
+    };
+
+    // ==========================================
+    // ▼▼▼ 手機編輯區 (卡片資料) ▼▼▼
     // ==========================================
     const coupons = [
         // --- 第 1 張卡片 ---
@@ -366,8 +375,12 @@
         }
     ];
 
-
-    (function(){var s=`<a href="https://line.me/..." target="_blank" class="social-btn"><img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg"></a><a href="https://www.threads.net/..." target="_blank" class="social-btn"><img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Threads_%28app%29.svg"></a><a href="https://www.facebook.com/..." target="_blank" class="social-btn"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg"></a>`;document.getElementById('social-active').innerHTML=s;document.getElementById('social-ended').innerHTML=s;var n=new Date(),e=new Date(endTimeStr);if(n>e){document.getElementById('view-active').style.display='none';document.getElementById('view-ended').style.display='block';}else{document.getElementById('view-active').style.display='block';document.getElementById('view-ended').style.display='none';var c=document.getElementById('couponList');if(c.innerHTML===""){coupons.forEach(function(i){if(!i.show)return;var b=i.buttons.filter(function(x){return x.show});if(b.length===0)return;var x=b.length===1?'btn-full-width':'',h='';b.forEach(function(bt){h+='<button class="btn-action '+x+'" onclick="_xg(this,\''+bt.code+'\',\''+bt.link+'\')">'+bt.text+' <span class="arrow">→</span></button>'});var d=document.createElement('div');d.className='deal-card';d.innerHTML='<div class="card-body"><div class="card-title"><span class="card-icon">'+i.icon+'</span> '+i.title+'</div><div class="card-desc">'+i.desc+'</div></div><div class="card-divider"></div><div class="card-actions">'+h+'</div>';c.appendChild(d);});}document.getElementById('lastUpdated').innerText=(n.getMonth()+1)+'/'+n.getDate()+' '+String(n.getHours()).padStart(2,'0')+':00 更新';}})();window._xg=function(e,c,u){var o=e.innerHTML;e.innerHTML="已複製！";e.style.background="#ee4d2d";e.style.color="white";var t=document.createElement("textarea");t.value=c;t.style.position="fixed";t.style.left="-9999px";document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(x){}document.body.removeChild(t);window.location.href=u;setTimeout(function(){e.innerHTML=o;e.style.background="";e.style.color="";},1000)};
+    // ==========================================
+    // ▼▼▼ 防護 3：代碼混淆核心區 (請勿觸碰) ▼▼▼
+    // ==========================================
+    
+    // (邏輯已更新：會自動讀取上方的 socialLinks 變數)
+    (function(){var s='<a href="'+socialLinks.line+'" target="_blank" class="social-btn"><img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg"></a><a href="'+socialLinks.threads+'" target="_blank" class="social-btn"><img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Threads_%28app%29.svg"></a><a href="'+socialLinks.facebook+'" target="_blank" class="social-btn"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg"></a>';document.getElementById('social-active').innerHTML=s;document.getElementById('social-ended').innerHTML=s;var n=new Date(),e=new Date(endTimeStr);if(n>e){document.getElementById('view-active').style.display='none';document.getElementById('view-ended').style.display='block';}else{document.getElementById('view-active').style.display='block';document.getElementById('view-ended').style.display='none';var c=document.getElementById('couponList');if(c.innerHTML===""){coupons.forEach(function(i){if(!i.show)return;var b=i.buttons.filter(function(x){return x.show});if(b.length===0)return;var x=b.length===1?'btn-full-width':'',h='';b.forEach(function(bt){h+='<button class="btn-action '+x+'" onclick="_xg(this,\''+bt.code+'\',\''+bt.link+'\')">'+bt.text+' <span class="arrow">→</span></button>'});var d=document.createElement('div');d.className='deal-card';d.innerHTML='<div class="card-body"><div class="card-title"><span class="card-icon">'+i.icon+'</span> '+i.title+'</div><div class="card-desc">'+i.desc+'</div></div><div class="card-divider"></div><div class="card-actions">'+h+'</div>';c.appendChild(d);});}document.getElementById('lastUpdated').innerText=(n.getMonth()+1)+'/'+n.getDate()+' '+String(n.getHours()).padStart(2,'0')+':00 更新';}})();window._xg=function(e,c,u){var o=e.innerHTML;e.innerHTML="已複製！";e.style.background="#ee4d2d";e.style.color="white";var t=document.createElement("textarea");t.value=c;t.style.position="fixed";t.style.left="-9999px";document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(x){}document.body.removeChild(t);window.location.href=u;setTimeout(function(){e.innerHTML=o;e.style.background="";e.style.color="";},1000)};
 </script>
 
 </body>
