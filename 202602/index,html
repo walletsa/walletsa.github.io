@@ -284,44 +284,44 @@
             desc: "100-20",
             buttons: [
                 {
-                    show: true,
+                    show: false,
                     text: "第一組",
                     code: "LBPUZXCR7Y",
                     link: "https://s.shopee.tw/9UvTJOlW8g"
                 },
                 {
-                    show: false,
+                    show: true,
                     text: "第二組（分眾，不是大家都有）",
-                    code: "111CAMPYB",
-                    link: "https://s.shopee.tw/7KqyjQgA8w"
+                    code: "22CAMPOB",
+                    link: "https://s.shopee.tw/AABMNTR8z6"
                 }
                 
             ]
         }, 
         {
-            show: false,
+            show: true,
             icon: "⚡️",
-            title: "全站 $199 折 $30",
-            desc: "有訂閱EDM限定",
+            title: "全站 $688 折 $66",
+            desc: "688-66",
             buttons: [
                 {
                     show: true,
                     text: "第一組",
-                    code: "EDM11ORDER",
-                    link: "https://s.shopee.tw/3LKTTDuAwY"
+                    code: "22AFF",
+                    link: "https://s.shopee.tw/4q9q1i2igQ"
                 },
                 {
-                    show: false,
-                    text: "第二組（分眾，不是大家都有）",
-                    code: "111CAMPYB",
-                    link: "https://s.shopee.tw/3LKTTDuAwY"
+                    show: true,
+                    text: "第二組",
+                    code: "22KOL",
+                    link: "https://s.shopee.tw/4VWzd6q2eh"
                 }
                 
             ]
         }, 
         // --- 第 2 張卡片 ---
         {
-            show: false,
+            show: true,
             icon: "🏪",
             title: "全站 $299 折 $30",
             desc: "指定超商取貨限定",
@@ -329,47 +329,41 @@
                 {
                     show: true,
                     text: "7-11 限定",
-                    code: "SVSP2601",
-                    link: "https://s.shopee.tw/7pmspVCW7g"
+                    code: "SVSP2602",
+                    link: "https://s.shopee.tw/4fqPpRBHEX"
                 },
                 {
                     show: true,
                     text: "全家 限定",
-                    code: "FMSP2601",
-                    link: "https://s.shopee.tw/7KqnWgDLU1"
+                    code: "FMSP2602",
+                    link: "https://s.shopee.tw/5L66cfmPBi"
                 }
             ]
         },
         // --- 第 3 張卡片 ---
         {
-            show: false,
+            show: true,
             icon: "🏪",
             title: "商城 $299 折 $30",
             desc: "指定超商取貨限定 ",
             buttons: [
                 {
-                    show: false,
+                    show: true,
                     text: "7-11 限定",
-                    code: "SVAP2601",
-                    link: "https://s.shopee.tw/9Uv6oa1mUA"
+                    code: "SVAP2602",
+                    link: "https://s.shopee.tw/AABMNZcC70"
                 },
                 {
                     show: true,
                     text: "全家 限定",
-                    code: "FMAPP2618",
-                    link: "https://s.shopee.tw/7KqnWgDLU1"
+                    code: "FMAPP2602",
+                    link: "https://s.shopee.tw/40aj2Fqfnn"
                 },
                 {
-                    show: false,
+                    show: true,
                     text: "萊爾富 限定",
-                    code: "HLAPP2601",
-                    link: "https://s.shopee.tw/3qGk4BRpYk"
-                },
-                {
-                    show: false,
-                    text: "OK 限定",
-                    code: "OKAPP12",
-                    link: "https://s.shopee.tw/7fSfS6O5da"
+                    code: "HLAPP2602",
+                    link: "https://s.shopee.tw/3qHIpxUpvL"
                 }
             ]
         },
@@ -377,14 +371,14 @@
         {
             show: false,
             icon: "⚡",
-            title: "全站699-77",
-            desc: "蝦幣回饋、現折",
+            title: "全站500-50",
+            desc: "蝦皮VIP限定",
             buttons: [
                 {
                     show: true,
-                    text: "第一組（蝦幣）",
-                    code: "ATCLNY",
-                    link: "https://s.shopee.tw/3qGk4BRpYk"
+                    text: "折扣碼",
+                    code: "VIPONLY1788",
+                    link: "https://s.shopee.tw/7fU1P3JdZx"
                 },
                 {
                     show: true,
