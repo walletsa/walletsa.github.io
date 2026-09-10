@@ -13,7 +13,10 @@ const patch={
 "icash-shin-extra-001":{image:"https://photo.s3.com.tw/look/Upload/BlogArticleImages/2024030110465000.jpg",imageSource:"正確商品圖",verified:"verified",source:"https://www.icash.com.tw/Home/NewsDetail/?ID=11758"},
 "icash-shin-extra-002":{image:"https://img.chilling.tw/images/author/Ivy/003%20-%202023-10-12T160337_136.jpg",imageSource:"正確商品圖",verified:"verified",source:"https://www.icash.com.tw/Home/NewsDetail/?ID=11551"},
 "icash-shin-extra-003":{image:"https://www.niusnews.com/upload/imgs/default/202301_Jennie/0118icash/02.jpeg",imageSource:"正確商品圖",verified:"verified",source:"https://www.icash.com.tw/Home/NewsDetail/?ID=11218"},
-"icash-shin-extra-004":{image:"https://down-tw.img.susercontent.com/file/tw-11134207-7r98v-lmy7r3xm1j8b8f",imageSource:"正確商品圖",verified:"verified",source:"https://www.icash.com.tw/Home/NewsDetail/?AspxAutoDetectCookieSupport=1&ID=11048"}
+"icash-shin-extra-004":{image:"https://down-tw.img.susercontent.com/file/tw-11134207-7r98v-lmy7r3xm1j8b8f",imageSource:"正確商品圖",verified:"verified",source:"https://www.icash.com.tw/Home/NewsDetail/?AspxAutoDetectCookieSupport=1&ID=11048"},
+"icash-shin-extra-006":{image:"https://media.karousell.com/media/photos/products/2023/6/16/_icash20__711__1686929695_fce92b74_progressive.jpg",imageSource:"正確商品實拍",verified:"verified"},
+"icash-shin-extra-007":{image:"https://i.imgur.com/tdwxab3.jpg",imageSource:"正確商品實拍",verified:"verified",source:"https://www.icash.com.tw/Home/NewsDetail/?ID=10135"},
+"icash-shin-extra-008":{image:"https://i.imgur.com/bBagxvA.jpg",imageSource:"正確商品實拍",verified:"verified",source:"https://www.icash.com.tw/Home/NewsDetail/?ID=10135"}
 };
 const clearIds=["icash-shin-005","icash-shin-016","icash-shin-017","icash-shin-018","icash-shin-019","icash-shin-020","icash-shin-021","icash-shin-022","icash-shin-023","icash-shin-024"];
 (window.CARD_DATA||[]).forEach(x=>{
