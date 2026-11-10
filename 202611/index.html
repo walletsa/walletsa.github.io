@@ -317,7 +317,66 @@
     // ▼▼▼ 手機編輯區 (卡片資料) ▼▼▼
     // ==========================================
     const coupons = [
-        // 11/11 折扣碼確認後直接新增於此
+        {
+            show: true,
+            icon: "⚡️",
+            title: "全站 $100 折 $20",
+            desc: "全站折扣碼",
+            buttons: [
+                {
+                    show: true,
+                    text: "複製折扣碼",
+                    code: "NOVSHO11",
+                    link: ""
+                }
+            ]
+        },
+        {
+            show: true,
+            icon: "🏪",
+            title: "全站 $299 折 $30",
+            desc: "指定超商取貨限定",
+            buttons: [
+                {
+                    show: true,
+                    text: "7-11 限定",
+                    code: "SVSP2611",
+                    link: ""
+                },
+                {
+                    show: true,
+                    text: "全家 限定",
+                    code: "FMSP2611",
+                    link: ""
+                }
+            ]
+        },
+        {
+            show: true,
+            icon: "🛍️",
+            title: "商城 $299 折 $30",
+            desc: "指定超商取貨限定",
+            buttons: [
+                {
+                    show: true,
+                    text: "7-11 限定",
+                    code: "SVAP2611",
+                    link: ""
+                },
+                {
+                    show: true,
+                    text: "全家 限定",
+                    code: "FMAPP2611",
+                    link: ""
+                },
+                {
+                    show: true,
+                    text: "萊爾富 限定",
+                    code: "HLAPP2611",
+                    link: ""
+                }
+            ]
+        }
     ];
 
     // ==========================================
@@ -325,7 +384,7 @@
     // ==========================================
     
     // (邏輯已更新：會自動讀取上方的 socialLinks 變數)
-    (function(){var s='<a href="'+socialLinks.line+'" target="_blank" class="social-btn"><img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg"></a><a href="'+socialLinks.threads+'" target="_blank" class="social-btn"><img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Threads_%28app%29.svg"></a><a href="'+socialLinks.facebook+'" target="_blank" class="social-btn"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg"></a>';document.getElementById('social-active').innerHTML=s;document.getElementById('social-ended').innerHTML=s;var n=new Date(),e=new Date(endTimeStr);if(n>e){document.getElementById('view-active').style.display='none';document.getElementById('view-ended').style.display='block';}else{document.getElementById('view-active').style.display='block';document.getElementById('view-ended').style.display='none';var c=document.getElementById('couponList');if(c.innerHTML===""){coupons.forEach(function(i){if(!i.show)return;var b=i.buttons.filter(function(x){return x.show});if(b.length===0)return;var x=b.length===1?'btn-full-width':'',h='';b.forEach(function(bt){h+='<button class="btn-action '+x+'" onclick="_xg(this,\''+bt.code+'\',\''+bt.link+'\')">'+bt.text+' <span class="arrow">→</span></button>'});var d=document.createElement('div');d.className='deal-card';d.innerHTML='<div class="card-body"><div class="card-title"><span class="card-icon">'+i.icon+'</span> '+i.title+'</div><div class="card-desc">'+i.desc+'</div></div><div class="card-divider"></div><div class="card-actions">'+h+'</div>';c.appendChild(d);});}document.getElementById('lastUpdated').innerText=(n.getMonth()+1)+'/'+n.getDate()+' '+String(n.getHours()).padStart(2,'0')+':00 更新';}})();window._xg=function(e,c,u){var o=e.innerHTML;e.innerHTML="已複製！";e.style.background="#ee4d2d";e.style.color="white";var t=document.createElement("textarea");t.value=c;t.style.position="fixed";t.style.left="-9999px";document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(x){}document.body.removeChild(t);window.location.href=u;setTimeout(function(){e.innerHTML=o;e.style.background="";e.style.color="";},1000)};
+    (function(){var s='<a href="'+socialLinks.line+'" target="_blank" class="social-btn"><img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg"></a><a href="'+socialLinks.threads+'" target="_blank" class="social-btn"><img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Threads_%28app%29.svg"></a><a href="'+socialLinks.facebook+'" target="_blank" class="social-btn"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg"></a>';document.getElementById('social-active').innerHTML=s;document.getElementById('social-ended').innerHTML=s;var n=new Date(),e=new Date(endTimeStr);if(n>e){document.getElementById('view-active').style.display='none';document.getElementById('view-ended').style.display='block';}else{document.getElementById('view-active').style.display='block';document.getElementById('view-ended').style.display='none';var c=document.getElementById('couponList');if(c.innerHTML===""){coupons.forEach(function(i){if(!i.show)return;var b=i.buttons.filter(function(x){return x.show});if(b.length===0)return;var x=b.length===1?'btn-full-width':'',h='';b.forEach(function(bt){h+='<button class="btn-action '+x+'" onclick="_xg(this,\''+bt.code+'\',\''+bt.link+'\')">'+bt.text+' <span class="arrow">→</span></button>'});var d=document.createElement('div');d.className='deal-card';d.innerHTML='<div class="card-body"><div class="card-title"><span class="card-icon">'+i.icon+'</span> '+i.title+'</div><div class="card-desc">'+i.desc+'</div></div><div class="card-divider"></div><div class="card-actions">'+h+'</div>';c.appendChild(d);});}document.getElementById('lastUpdated').innerText=(n.getMonth()+1)+'/'+n.getDate()+' '+String(n.getHours()).padStart(2,'0')+':00 更新';}})();window._xg=function(e,c,u){var o=e.innerHTML;e.innerHTML="已複製！";e.style.background="#ee4d2d";e.style.color="white";var t=document.createElement("textarea");t.value=c;t.style.position="fixed";t.style.left="-9999px";document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(x){}document.body.removeChild(t);if(u){window.location.href=u;}setTimeout(function(){e.innerHTML=o;e.style.background="";e.style.color="";},1000)};
 </script>
 
 </body>
