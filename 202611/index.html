@@ -41,7 +41,7 @@
             position: relative; z-index: 1;
         }
         .header-active {
-            background: linear-gradient(160deg, #ff6a3d 0%, #ee4d2d 58%, #d83a20 100%);
+            background: radial-gradient(circle at 90% 15%, rgba(255,211,119,.28), transparent 28%), radial-gradient(circle at 8% 85%, rgba(255,255,255,.14), transparent 30%), linear-gradient(160deg, #ff6a3d 0%, #ee4d2d 58%, #d83a20 100%);
             border-top: 6px solid #ffbf47;
             padding: 18px 20px 44px 20px; text-align: center;
             border-bottom-left-radius: 28px; border-bottom-right-radius: 28px;
@@ -67,23 +67,7 @@
             color: #555; font-size: 15px; font-weight: 700; margin: 0 0 16px 0;
             letter-spacing: 0.5px;
         }
-        .header-active .page-subtitle { color: #fff; margin-bottom: 10px; }
-        .event-badge {
-            display: inline-block; background: #fff3bf; color: #b92f18; font-size: 12px; font-weight: 900;
-            padding: 5px 10px; border-radius: 999px; margin-bottom: 10px; letter-spacing: .5px;
-            box-shadow: 0 3px 8px rgba(0,0,0,.08);
-        }
-        .event-note {
-            color: rgba(255,255,255,.92); font-size: 12px; font-weight: 600; margin: 0 0 12px 0;
-        }
-        .feature-row {
-            display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; margin-bottom: 12px;
-        }
-        .feature-chip {
-            background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.35);
-            color: #fff; padding: 4px 8px; border-radius: 999px; font-size: 11px; font-weight: 700;
-        }
-
+        .header-active .page-subtitle { color: #fff; font-size: 23px; font-weight: 900; margin: 10px 0 18px; text-shadow: 0 2px 6px rgba(130,32,15,.18); }
         .info-panel {
             background: #ffffff; border: 1px solid #eee; border-radius: 10px;
             padding: 10px 12px;
@@ -107,15 +91,6 @@
             padding: 0 12px 30px 12px;
             position: relative; z-index: 10;
         }
-
-        .promo-note {
-            background: #fff; border: 1px solid #ffe0d6; border-radius: 12px; margin-bottom: 12px;
-            padding: 12px 14px; box-shadow: 0 4px 12px rgba(238,77,45,.06);
-            display: flex; gap: 10px; align-items: flex-start;
-        }
-        .promo-note-icon { font-size: 20px; line-height: 1; }
-        .promo-note-title { font-size: 13px; font-weight: 900; color: #333; margin-bottom: 3px; }
-        .promo-note-desc { font-size: 11px; color: #777; line-height: 1.45; }
 
         /* 卡片樣式 */
         .deal-card {
@@ -226,14 +201,7 @@
 <div id="view-active" class="view-section">
     <div class="header-active">
         <div class="brand-active">優惠資訊情報站</div>
-        <div class="event-badge">🔥 11.11 年度最強購物節</div>
         <div class="page-subtitle"><span>🛍️</span>蝦皮 11/11 最強購物節</div>
-        <div class="event-note">熱門折扣碼整理｜點一下就幫你複製</div>
-        <div class="feature-row">
-            <span class="feature-chip">⚡ 自動複製</span>
-            <span class="feature-chip">🎟️ 一鍵領券</span>
-            <span class="feature-chip">🕒 即時更新</span>
-        </div>
         
         <div class="info-panel">
             <div class="tip-row">
@@ -247,14 +215,6 @@
     </div>
 
     <div class="container">
-        <div class="promo-note">
-            <div class="promo-note-icon">📣</div>
-            <div>
-                <div class="promo-note-title">11/11 折扣碼集中整理</div>
-                <div class="promo-note-desc">折扣碼依官方活動更新；看到想用的券，點按鈕即可複製並前往蝦皮。</div>
-            </div>
-        </div>
-
         <!-- 優惠券列表 -->
         <div id="couponList"></div>
 
